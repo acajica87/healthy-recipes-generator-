@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
     <link rel="stylesheet" href="src/style.css" />
     <title>AI Recipes Generator</title>
   </head>
@@ -13,7 +14,7 @@
       </header>
 
       <main>
-        <form>
+        <form id="recipe-generator-form">
           <input
             type="text"
             placeholder="Enter five ingredients for your recipe"
@@ -24,14 +25,9 @@
           />
           <input type="submit" class="submit-button" />
         </form>
-        <div class="recipe">
-          Spiced carrot & lentil soup
-          <br />
-          A delicious, spicy blend packed full of iron and low in fat to boot.
-          It's ready in under half an hour, or can be made in a slow cooker
-        </div>
+        <div class="recipe" id="recipe"></div>
       </main>
-      <br />
+
       <footer>
         This AI project was coded by
         <a href="https://github.com/acajica87" target="_blank">Ana Cajica</a>
