@@ -1,12 +1,22 @@
 function displayRecipe(response) {
+  let recipeText = response.data.answer;
+
+  recipeText = recipeText.replace(/^```html/g, "").replace(/```$/g, "");
+
+  recipeText = recipeText.replace(
+    /(Tiempo de preparación:.*?)(\d+.*?minutos)/g,
+    function (match, p1, p2) {
+      return `<strong style="color: #A3C77C;">${p1}</strong><span style="color: #000000; font-weight: bold;">${p2}</span>`;
+    }
+  );
+
   new Typewriter("#recipe", {
-    strings: response.data.answer,
+    strings: recipeText,
     autoStart: true,
     delay: 1,
     cursor: "",
   });
 }
-
 function generateRecipe(event) {
   event.preventDefault();
 
