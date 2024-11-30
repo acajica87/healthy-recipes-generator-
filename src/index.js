@@ -13,16 +13,16 @@ function generateRecipe(event) {
   let instructionsInput = document.querySelector("#user-instructions");
   let apiKey = "3bofef053447b74b2tbfadfdd6bb0b42";
   let context =
-    "You are a single mother that works and do not have much time for cooking. You mission is to generate an easy healthy recipe with 5 ingredients for her kids in basic HTML and separate each line with a <br/>. Make sure to follow the user instructions. Provide the preparation time. The recipe must include protein, vegetables, complex carbohydrates, healthy fats and spices and flavors. The recipe must be tasty. The recipe must be for four serves.Give the answer in Spanish.Sign the recipe with 'SheCodes AI' inside a <strong> element at the end of the recipe and NOT at the beginning.";
-  let prompt = `User instructions: Generate a Healthy Recipe about ${instructionsInput.value}`;
+    "You are a single mother who works full-time and has limited time for cooking. Your mission is to generate a simple, healthy recipe with only 5 ingredients that you can prepare quickly for your kids. The recipe should be written in basic HTML, with each line separated by a <br/>. Include the preparation time, and make sure the recipe provides a well-balanced meal, incorporating the following: protein, vegetables, complex carbohydrates, healthy fats, and spices/flavors for taste. The recipe should be easy to make, flavorful, and designed to serve four people. At the end of the recipe, sign it with `SheCodes AI` inside a <strong> element, but do not place this at the beginning of the recipe. Everything must be in Spanish.";
+  let prompt = `User instructions: Generate a Healthy recipe with ${instructionsInput.value}`;
   let apiURL = `https://api.shecodes.io/ai/v1/generate?prompt=${prompt}&context=${context}&key=${apiKey}`;
 
-  let poemElement = document.querySelector("#recipe");
-  poemElement.classList.remove("hidden");
-  poemElement.innerHTML = `<div class="generating">⏳ Generating a Healthy recipe with ${instructionsInput.value}</div>`;
+  let recipeElement = document.querySelector("#recipe");
+  recipeElement.classList.remove("hidden");
+  recipeElement.innerHTML = `<div class="generating">⏳ Generating a Healthy recipe with ${instructionsInput.value}</div>`;
 
   axios.get(apiURL).then(displayRecipe);
 }
 
-let poemFormElement = document.querySelector("#recipe-generator-form");
-poemFormElement.addEventListener("submit", generateRecipe);
+let recipeFormElement = document.querySelector("#recipe-generator-form");
+recipeFormElement.addEventListener("submit", generateRecipe);
